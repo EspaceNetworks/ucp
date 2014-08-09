@@ -250,11 +250,14 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 		right: 0;
 		z-index: 50;
 		font-size: 120%;
+		#global-actions {
+			position: relative;
+			display: inline;
+		}
 		#presence-box2 {
-			display: none;
+			display: inline;
 			overflow: hidden;
-			position: absolute;
-			right: 30px;
+			position: relative;
 			white-space: nowrap;
 			transition: width 1s;
 			padding-left: 1px;
@@ -271,12 +274,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 				i:hover, i.active {
 					opacity: 1;
 				}
-				display: inline-block;
+				display: inline;
 				position: relative;
 			}
 			.p-container {
 				display: inline;
-				position: absolute;
+				position: relative;
 				overflow: hidden;
 				.p-msg {
 					text-indent: 0px;
@@ -288,13 +291,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 					position: relative;
 					font-size: initial;
 					top: 1px;
-					width: 160px;
+					width: 0px;
 					height: 21px;
 				}
+				.p-msg.active {
+					width: 189px;
+				}
 			}
-		}
-		#presence-box2:hover, #presence-box2.active {
-			width: 189px;
 		}
 		#settings-btn {
 			i {
@@ -453,6 +456,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 #fs-navside {
 	@media only screen and (max-width : 767px) {
 		display: none;
+	}
+	.nav-stacked {
+		overflow-x: hidden;
+		overflow-y: auto;
 	}
 }
 

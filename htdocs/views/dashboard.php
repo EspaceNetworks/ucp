@@ -39,6 +39,9 @@
 		  <?php } ?>
 		</ol>
 		<div id="top-dashboard-nav-right">
+			<!--<div id="global-actions">
+				<i class="fa fa-weixin"></i>
+			</div>-->
 			<div id="presence-box2">
 				<div class="p-btn">
 					<i class="fa fa-circle"></i>

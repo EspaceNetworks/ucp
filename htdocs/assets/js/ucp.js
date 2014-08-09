@@ -145,6 +145,9 @@ var UCPC = Class.extend({
 			$("#settings-btn i").toggleClass("active");
 		});
 
+		$("#presence-box2").hover(function() {
+			$("#p-msg").addClass("active");
+		})
 		$("#presence-box2").click(function() {
 			$(this).toggleClass("active");
 			$("#presence-menu2").toggleClass("active");
@@ -198,6 +201,7 @@ var UCPC = Class.extend({
 			if (UCP.transitioning || $( window ).width() > 767) {
 				return true;
 			}
+			//TODO should this even be in here?
 			st = $("#dashboard-content").scrollTop();
 			if (st > 40) {
 				UCP.footerHidden = true;
@@ -349,6 +353,13 @@ var UCPC = Class.extend({
 				$("#dashboard-content").height($("#dashboard").height() - 59);
 			}
 		}
+		if ($("#fs-navside").length) {
+			if (!UCP.footerHidden) {
+				$("#fs-navside ul.nav-pills").height($("#dashboard").height() - 135);
+			} else {
+				$("#fs-navside ul.nav-pills").height($("#dashboard").height() - 59);
+			}
+		}
 	},
 	notificationsAllowed: function() {
 		this.notify = true;
@@ -480,9 +491,9 @@ var UCPC = Class.extend({
 			$( "#messages-container .message-box[data-id=\"" + id + "\"]" ).addClass("expand");
 			$( "#messages-container .message-box[data-id=\"" + id + "\"] .fa-arrow-up" ).addClass("fa-arrow-down").removeClass("fa-arrow-up");
 		}
-		$( "#messages-container .message-box[data-id=\"" + id + "\"]" ).data("last-msg-id",msgid);
+		$( "#messages-container .message-box[data-id=\"" + id + "\"]" ).data("last-msg-id", msgid);
 
-		if(typeof colorNew === "undefined" || colorNew) {
+		if (typeof colorNew === "undefined" || colorNew) {
 			$( "#messages-container .title-bar[data-id=\"" + id + "\"]" ).css("background-color", "#428bca");
 		} else {
 			sender = "Me";
@@ -635,7 +646,7 @@ var UCPC = Class.extend({
 				if ($(this).prop("type") == "password") {
 					UCP.showDialog("Confirm Password", "Please Reconfirm Your Password<input type='password' id='ucppass'></input><button id='passsub'>Submit</button>");
 					$("#passsub").click(function() {
-						if($("#ucppass").val() !== "") {
+						if ($("#ucppass").val() !== "") {
 							var np = $("#ucppass").val();
 							if (np != password) {
 								$("#message").addClass("alert-danger");
@@ -706,6 +717,12 @@ $(function() {
 	UCP.ready();
 });
 
+/**
+ * Function that will wrap a string with a span of class name
+ * @param  {string} str       The string to search for
+ * @param  {string} className The name of the class to wrap said string with
+ * @return {object}           Jquery chain object, returns the completed string
+ */
 jQuery.fn.highlight = function(str, className) {
 	var regex = new RegExp("\\b" + str + "\\b", "gi");
 
